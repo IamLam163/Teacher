@@ -274,6 +274,81 @@ isRaining
   : console.log('No need for a rain coat.')
 ```
 
+### **Ternary Operator (`condition ? expression1 : expression2`) in JavaScript**
+
+The **ternary operator** is a shorthand for `if-else` statements. It takes three parts:
+
+```javascript
+condition ? expression_if_true : expression_if_false;
+```
+
+It evaluates the `condition`:
+- If **true**, it returns `expression_if_true`
+- If **false**, it returns `expression_if_false`
+
+---
+
+### **Example 1: Checking if a Number is Even or Odd**
+```javascript
+let number = 7;
+let result = (number % 2 === 0) ? "Even" : "Odd";
+console.log(result);
+```
+**Output:**
+```
+Odd
+```
+🔹 If `number` is divisible by 2, it prints `"Even"`, otherwise `"Odd"`.
+
+---
+
+### **Example 2: Checking User Access**
+```javascript
+let isLoggedIn = true;
+let message = isLoggedIn ? "Welcome back!" : "Please log in.";
+console.log(message);
+```
+**Output:**
+```
+Welcome back!
+```
+🔹 If `isLoggedIn` is `true`, it prints `"Welcome back!"`, otherwise `"Please log in."`.
+
+---
+
+### **Example 3: Finding the Larger Number**
+```javascript
+let a = 10, b = 20;
+let larger = (a > b) ? a : b;
+console.log(larger);
+```
+**Output:**
+```
+20
+```
+🔹 It assigns the larger of `a` or `b` to `larger`.
+
+---
+
+### **Example 4: Nested Ternary Operator**
+```javascript
+let age = 18;
+let status = (age < 13) ? "Child" : (age < 20) ? "Teen" : "Adult";
+console.log(status);
+```
+**Output:**
+```
+Teen
+```
+🔹 It first checks if `age < 13`, then if `age < 20`. Otherwise, it assumes `"Adult"`.
+
+---
+
+### **When to Use the Ternary Operator?**
+✅ When you need a quick **if-else** check inside an expression.  
+❌ Avoid using it when the logic is complex—it can reduce readability.
+
+
 🌕  You are extraordinary and you have a remarkable potential. You have just completed day 4 challenges and you are four steps ahead to your way to greatness. Now do some exercises for your brain and  muscle.  
 
 ## 💻 Exercises
