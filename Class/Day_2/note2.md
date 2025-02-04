@@ -1,4 +1,4 @@
-# **Day 4: Arrays & Objects in JavaScript**  
+# ** Arrays & Objects in JavaScript**  
 
 JavaScript provides powerful ways to work with **arrays** and **objects**, which are fundamental data structures in the language. Let's break down each topic in detail.
 
