@@ -10,5 +10,23 @@
 
     <script src="./data/countries_data.js"></script>
     <script src="./scripts/main.js"></script>
+    <div></div>
+    <script>
+      class Persons {
+        constructor(firstName, lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+        }
+
+        getFullName() {
+          return `${this.firstName} ${this.lastName}`;
+        }
+      }
+
+      const person = new Persons("John", "Denis");
+      document.querySelector("div").textContent = person.getFullName();
+    </script>
+
+    <h2>DOM</h2>
   </body>
 </html>
