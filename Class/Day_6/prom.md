@@ -136,3 +136,10 @@ Promise.allSettled([promise1, promise2, promise3]).then(console.log);
 - Use `.then()` and `.catch()` for handling them.
 - Prefer **async/await** for cleaner code.
 - Use `Promise.all()`, `Promise.race()`, and `Promise.allSettled()` for advanced scenarios.
+
+es5 and es6
+ecma java
+
+### Module
+
+## package.json
