@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const list = document.querySelector(".ajax-section .cities");
   const apiKey = "4d8fb5b93d4af21d66a2948710284366";
 
+  const savedCities = JSON.parse(localStorage.getItem("cities")) || [];
+  savedCities.forEach((city) => {
+    addCity(city);
+  });
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let inputVal = input.value;
@@ -47,14 +52,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
 
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
-        const { main, name, sys, weather } = data;
-        const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
+        addCity(data);
+        msg.textContent = "";
+        form.reset();
+        input.focus();
+      })
+      .catch(() => {
+        msg.textContent = "Please search for a valid city 😩";
+      });
 
-        const li = document.createElement("li");
-        li.classList.add("city");
-        const markup = `
+    //form.reset();
+    //input.focus();
+    //console.log(listItemsArray);
+    //localStorage.setItem("city", JSON.stringify(data));
+
+    function addCity(data) {
+      const { main, name, sys, weather } = data;
+      const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
+
+      const li = document.createElement("li");
+      li.classList.add("city");
+      const markup = `
               <h2 class="city-name" data-name="${name},${sys.country}">
                 <span>${name}</span>
                 <sup>${sys.country}</sup>
@@ -62,21 +87,19 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
               <figure>
                 <img class="city-icon" src="${icon}" alt="${
-          weather[0]["description"]
-        }">
+        weather[0]["description"]
+      }">
                 <figcaption>${weather[0]["description"]}</figcaption>
               </figure>
             `;
-        li.innerHTML = markup;
-        list.appendChild(li);
-        msg.textContent = "";
-        localStorage.setItem("city", JSON.stringify(data));
-      })
-      .catch(() => {
-        msg.textContent = "Please search for a valid city 😩";
-      });
-
-    form.reset();
-    input.focus();
+      li.innerHTML = markup;
+      const theList = list.appendChild(li);
+      console.log(theList);
+      console.log(list);
+      msg.textContent = "";
+      localStorage.setItem("city", JSON.stringify(data));
+      savedCities.push(data);
+      localStorage.setItem("citie", JSON.stringify(savedCities));
+    }
   });
 });
