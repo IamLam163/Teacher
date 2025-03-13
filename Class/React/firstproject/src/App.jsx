@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import "./App.css";
+import Greeting from "./Greeting";
+import UserCard from "./UserCard";
+import Button from "./Button";
 
 function App() {
-  const [count, setCount] = useState(0)
+  //function as Props
+  const showAlert = () => {
+    alert("Hello from App component");
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p> React Components</p>
+      <h1>
+        Components are building blocks that allow us create reusable and
+        independent pieces of UI
+      </h1>
+      <Greeting name="Cele" />
+      <Greeting name="Ola" />
+      <UserCard name="Alex" age={30} hobbies={["reading", "singing"]} />
+      <Button handleClick={showAlert} label="Click Me" />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
