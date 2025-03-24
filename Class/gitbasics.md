@@ -226,45 +226,9 @@ git rebase main
 
 ---
 
-## **8. Working with GitHub Actions (Automation)**
-
-Create a `.github/workflows/main.yml` file:
-
-```yaml
-name: CI
-
-on: [push]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Run tests
-        run: echo "Running tests"
-```
-
----
-
-## **9. Securing Your GitHub Repo**
+## **8. Securing Your GitHub Repo**
 
 - Enable **Two-Factor Authentication**
 - Use **.gitignore** to ignore sensitive files
 - Use **GitHub Secrets** for API keys in workflows
 - Set branch protection rules
-
----
-
-## **10. Practical Project Idea**
-
-Try building a **To-Do List App** with GitHub collaboration:
-
-1. **Initialize Git**
-2. **Create a `develop` branch**
-3. **Create a `feature/add-tasks` branch**
-4. **Commit and push changes**
-5. **Open a Pull Request**
-6. **Merge into `main`**
-
----
